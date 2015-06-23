@@ -5,3 +5,11 @@ D:\Programmes\C#\AssStyleCopier\AssStyleCopier\obj\x86\Debug\AssStyleCopier.Prop
 D:\Programmes\C#\AssStyleCopier\AssStyleCopier\obj\x86\Debug\AssStyleCopier.csproj.GenerateResource.Cache
 D:\Programmes\C#\AssStyleCopier\AssStyleCopier\obj\x86\Debug\AssStyleCopier.exe
 D:\Programmes\C#\AssStyleCopier\AssStyleCopier\obj\x86\Debug\AssStyleCopier.pdb
+D:\Programmes\C#\AssStyleCopier\obj\x86\Debug\AssStyleCopier.exe
+D:\Programmes\C#\AssStyleCopier\obj\x86\Debug\AssStyleCopier.pdb
+D:\Programmes\C#\AssStyleCopier\bin\Debug\AssStyleCopier.exe
+D:\Programmes\C#\AssStyleCopier\bin\Debug\AssStyleCopier.pdb
+D:\Programmes\C#\AssStyleCopier\obj\x86\Debug\AssStyleCopier.csprojResolveAssemblyReference.cache
+D:\Programmes\C#\AssStyleCopier\obj\x86\Debug\AssStyleCopier.MainForm.resources
+D:\Programmes\C#\AssStyleCopier\obj\x86\Debug\AssStyleCopier.Properties.Resources.resources
+D:\Programmes\C#\AssStyleCopier\obj\x86\Debug\AssStyleCopier.csproj.GenerateResource.Cache
