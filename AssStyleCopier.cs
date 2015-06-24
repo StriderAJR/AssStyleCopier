@@ -333,7 +333,24 @@ namespace AssStyleCopier
 			return styles;
 		}
 
-		public void CopyStyles()
+		private string GetStyleString(SsaStyle style)
+		{
+			var line = StyleLabel + " ";
+			line += style.StyleName + ",";
+
+			int i = 0;
+			foreach (var styleItem in style.StyleValues)
+			{
+				line += styleItem.Value;
+				if (i < style.StyleValues.Count - 1)
+					line += ",";
+				i++;
+			}
+
+			return line;
+		}
+
+		public void CopyStyles(bool copyMissingStylesFromTemplate)
 		{
 			foreach (var file in _files)
 			{
@@ -350,21 +367,34 @@ namespace AssStyleCopier
 
 						if (templateStyle != null)
 						{
-							var line = StyleLabel + " ";
-							line += templateStyle.StyleName + ",";
-
-							int i = 0;
-							foreach (var styleItem in templateStyle.StyleValues)
-							{
-								line += styleItem.Value;
-								if (i < templateStyle.StyleValues.Count - 1)
-									line += ",";
-								i++;
-							}
-
-							lines[styleComparison.Key.LineIndex-1] = line;
+							lines[styleComparison.Key.LineIndex - 1] = GetStyleString(templateStyle);
 						}
 					}
+
+					if(copyMissingStylesFromTemplate)
+						if (styleComparison.Value == StyleCompareResult.TemplateUnique)
+						{
+							SsaStyle templateStyle =
+								_templateSsaFile.Styles.FirstOrDefault(x => x.StyleName == styleComparison.Key.StyleName);
+
+							if (templateStyle != null)
+							{
+								List<string> tempLines = lines.ToList();
+								int index = tempLines.IndexOf(StylesLine);
+
+								if (index == -1)
+									index = tempLines.IndexOf(StylesLineNew);
+
+								if (index == -1)
+									throw new ArgumentException("Couldn't find Styles section");
+
+							
+								int indexToInsert = index + _templateSsaFile.Styles.Count + 1;
+								tempLines.Insert(indexToInsert + 1, GetStyleString(templateStyle));
+
+								lines = tempLines.ToArray();
+							}
+						}
 				}
 
 				File.WriteAllLines(file.FullPath, lines);

@@ -193,7 +193,9 @@ namespace AssStyleCopier
 
 		private void btnCopyStyles_Click(object sender, EventArgs e)
 		{
-			_assStyleCopier.CopyStyles();
+			bool copyMissingStylesFromTemplate = cbCopyMissingStylesFromTemplate.Checked;
+
+			_assStyleCopier.CopyStyles(copyMissingStylesFromTemplate);
 			_assStyleCopier.ReloadFiles();
 
 			lbFileList_SelectedValueChanged(null, null);
